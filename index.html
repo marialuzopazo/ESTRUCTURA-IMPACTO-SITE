@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- ============================================================
+       ESTRUCTURA DE IMPACTO — Portfolio de María Luz Opazo
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Estructura de Impacto Studio — Branding estratégico, UX/UI y diseño humanizado para freelancers tech, líderes y organizaciones con propósito." />
+  <meta name="author" content="María Luz Opazo" />
+
+  <!-- Open Graph (para compartir en redes) -->
+  <meta property="og:title" content="Estructura de Impacto · María Luz Opazo" />
+  <meta property="og:description" content="Lo que ves es solo la punta del iceberg." />
+  <meta property="og:type" content="website" />
+
+  <title>Estructura de Impacto · María Luz Opazo</title>
+
+  <!-- Tipografías: Cormorant (display elegante) + DM Sans (cuerpo limpio) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+   <!-- email js-->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"> </script>
+  <script>emailjs.init("service_f8g059r")</script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       INDICADOR DE PROFUNDIDAD
+       Barra lateral que muestra "cuán profundo" estás en la página.
+       Se actualiza via JavaScript al hacer scroll.
+       ============================================================ -->
+  <div class="depth-indicator" aria-hidden="true">
+    <div class="depth-indicator__track">
+      <div class="depth-indicator__fill" id="depthFill"></div>
+    </div>
+    <span class="depth-indicator__label" id="depthLabel">0m</span>
+  </div>
+
+  <!-- ============================================================
+       FONDO: ICEBERG PARALAX
+       Imagen fija que se mueve más lento que el contenido.
+       El div .bg-gradient transiciona de negro a azul profundo.
+       ============================================================ -->
+  <div class="bg-wrapper" aria-hidden="true">
+    <div class="bg-gradient" id="bgGradient"></div>
+    <div class="bg-iceberg" id="bgIceberg">
+      <img src="assets/images/iceberg.jpg" alt="" class="bg-iceberg__img" id="icebergImg" draggable="false" />
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAVEGACIÓN
+       Simple y fija. El logo desaparece en la hero y aparece
+       al scrollear (controlado por JS).
+       ============================================================ -->
+  <nav class="nav" id="mainNav" role="navigation" aria-label="Navegación principal">
+    <a href="#inicio" class="nav__logo" aria-label="Inicio">
+      Estructura<span class="nav__logo-dot">.</span>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="#superficie" class="nav__link">Lo visible</a></li>
+      <li><a href="#profundidad" class="nav__link">La profundidad</a></li>
+      <li><a href="#proceso" class="nav__link">El proceso</a></li>
+      <li><a href="#sobre" class="nav__link">Sobre mí</a></li>
+      <li><a href="#contacto" class="nav__link nav__link--cta">Trabajemos</a></li>
+    </ul>
+    <!-- Menú hamburguesa para mobile -->
+    <button class="nav__hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Menú mobile overlay -->
+  <div class="nav__mobile" id="navMobile" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#superficie" class="nav__mobile-link">Lo visible</a></li>
+      <li><a href="#profundidad" class="nav__mobile-link">La profundidad</a></li>
+      <li><a href="#proceso" class="nav__mobile-link">El proceso</a></li>
+      <li><a href="#sobre" class="nav__mobile-link">Sobre mí</a></li>
+      <li><a href="#contacto" class="nav__mobile-link">Trabajemos juntos →</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       SECCIÓN 1: HERO / INICIO
+       La punta del iceberg. Lo que todo el mundo ve.
+       El pollito está ahi
+       ============================================================ -->
+  <section class="section section--hero" id="inicio" aria-labelledby="heroTitle">
+
+    <!-- Pollito mascota — posicionado en la punta del iceberg -->
+    <div class="pollito" id="pollito" aria-label="Pollito mascota de Estructura de Impacto">
+      <img src="assets/images/pollito.png" alt="Pollito con laptop y fuego — mascota de Estructura de Impacto"
+        class="pollito__img" />
+      <!-- Ondas de "actividad" alrededor del pollito -->
+      <div class="pollito__ripple pollito__ripple--1" aria-hidden="true"></div>
+      <div class="pollito__ripple pollito__ripple--2" aria-hidden="true"></div>
+    </div>
+
+    <!-- Contenido del hero -->
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span class="eyebrow-text">Branding · UX · Impacto</span>
+      </div>
+
+      <h1 class="hero__title" id="heroTitle">
+        Lo que ven<br />
+        es solo la <em>punta.</em>
+      </h1>
+
+      <p class="hero__sub">
+        Detrás de cada freelance que atrae los clientes correctos
+        hay una estructura que casi nadie ve.
+        Yo te ayudo a construirla.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#profundidad" class="btn btn--primary">
+          mirá en lo profundo
+          <span class="btn__arrow" aria-hidden="true">↓</span>
+        </a>
+        <a href="#contacto" class="btn btn--ghost">Trabajemos juntos</a>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-hint__line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+  <!-- ============================================================
+       SECCIÓN 2: LO VISIBLE (justo debajo de la superficie)
+       Qué es lo que la gente ve: presencia, posts, perfil.
+       ============================================================ -->
+  <section class="section section--visible" aria-labelledby="visibleTitle">
+    <div class="container">
+
+      <div class="reveal">
+        <div class="section-label">
+          <span class="section-label__line" aria-hidden="true"></span>
+          <span class="section-label__text">Lo que todo el mundo ve</span>
+        </div>
+        <h2 class="section__title" id="visibleTitle">
+          Tu cliente ideal<br />
+          no está buscando lo más barato<br />
+          Busca NO <em>equivocarse.</em>
+        </h2>
+      </div>
+
+      <!-- Grid de lo "visible" -->
+      <div class="iceberg-split reveal">
+        <div class="iceberg-split__col iceberg-split__col--visible">
+          <div class="split-badge split-badge--above">Lo que todos ven</div>
+          <ul class="split-list" role="list">
+            <li class="split-list__item">Tu perfil de Instagram o LinkedIn</li>
+            <li class="split-list__item">Tus posts y reels</li>
+            <li class="split-list__item">Tu bio y tu foto de perfil</li>
+            <li class="split-list__item">Tu portfolio</li>
+            <li class="split-list__item">y cómo te presentás</li>
+          </ul>
+          <p class="split-note">
+            Esto representa apenas el <strong>10%</strong> del iceberg.
+            pero esto es lo ÚNICO que el cliente evalúa antes de decidir si confía o no.
+          </p>
+        </div>
+
+        <div class="iceberg-split__divider" aria-hidden="true">
+          <div class="split-divider-line"></div>
+          <span class="split-divider-label">vs</span>
+          <div class="split-divider-line"></div>
+        </div>
+
+        <div class="iceberg-split__col iceberg-split__col--hidden">
+          <div class="split-badge split-badge--below">Lo que NADIE ve</div>
+          <ul class="split-list" role="list">
+            <li class="split-list__item">La estrategia detrás de cada post</li>
+            <li class="split-list__item">La organizacion del contenido y trabajo</li>
+            <li class="split-list__item">La investigación de tu audiencia</li>
+            <li class="split-list__item">Los valores y propósito de tu presencia digital</li>
+            <li class="split-list__item">El sistema que hace que todo funcione</li>
+          </ul>
+          <p class="split-note">
+            Esto representa el <strong>90%</strong> del iceberg.
+            Es lo que separa a los freelance que tienen clientes de las que sólo se ven bien.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LÍNEA DE INMERSIÓN — Transición más profunda
+       ============================================================ -->
+  <div class="depth-marker" aria-hidden="true">
+    <div class="depth-marker__line"></div>
+    <span class="depth-marker__text">— entrando en profundidad —</span>
+    <div class="depth-marker__line"></div>
+  </div>
+
+  <!-- ============================================================
+       SECCIÓN 3: LA PROFUNDIDAD
+       Los 4 pilares de una marca que convierte.
+       Las burbujas se generan en esta sección via JS.
+       ============================================================ -->
+  <section class="section section--depth" id="profundidad" aria-labelledby="depthTitle">
+
+    <!-- Container de burbujas (animadas con JS) -->
+    <div class="bubbles-container" id="bubblesContainer" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="section-label__line" aria-hidden="true"></span>
+          <span class="section-label__text">Los 4 pilares</span>
+        </div>
+        <h2 class="section__title" id="depthTitle">
+          La estructura que<br />nadie ve — y todos<br /><em>sienten.</em>
+        </h2>
+      </div>
+
+      <!-- Pilares en grid -->
+      <div class="pillars-grid">
+
+        <article class="pillar reveal" style="--delay: 0s">
+          <div class="pillar__num" aria-hidden="true">01</div>
+          <h3 class="pillar__title">Tranquilidad Mental</h3>
+          <p class="pillar__desc">
+            El cliente ideal no compra un servicio. busca desentenderse del problema.
+            Tu presencia digital real tiene que comunicar que si te elige, se puede ir a dormir tranquilo.
+          </p>
+          <div class="pillar__depth" aria-hidden="true">— 10m</div>
+        </article>
+
+        <article class="pillar reveal" style="--delay: 0.1s">
+          <div class="pillar__num" aria-hidden="true">02</div>
+          <h3 class="pillar__title">Construir autoridad real</h3>
+          <p class="pillar__desc">
+            No dando clases. Mostrando que entendés perfectamente
+            lo que le pasa a tu cliente porque llevás mucho tiempo resolviendo esos mismos problemas.
+          </p>
+          <div class="pillar__depth" aria-hidden="true">— 20m</div>
+        </article>
+
+        <article class="pillar reveal" style="--delay: 0.2s">
+          <div class="pillar__num" aria-hidden="true">03</div>
+          <h3 class="pillar__title">Confianza humana</h3>
+          <p class="pillar__desc">
+            El cliente le da plata a personas, no a logos bonitos.
+            Si no mostrás tu cara, tus procesos y tu criterio, no existe confianza real.
+          </p>
+          <div class="pillar__depth" aria-hidden="true">— 30m</div>
+        </article>
+
+        <article class="pillar reveal" style="--delay: 0.3s">
+          <div class="pillar__num" aria-hidden="true">04</div>
+          <h3 class="pillar__title">creatividad con base real</h3>
+          <p class="pillar__desc">
+            las ideas se pueden llevar a cabo
+            unicamente con una estructura sólida y sin vueltas.
+            la seriedad y profesionalismo empieza acá.
+          </p>
+          <div class="pillar__depth" aria-hidden="true">— 40m</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 4: EL PROCESO
+       Cómo trabajo — transparencia como herramienta de venta.
+       ============================================================ -->
+  <section class="section section--process" id="proceso" aria-labelledby="processTitle">
+    <div class="container">
+
+      <div class="reveal">
+        <div class="section-label">
+          <span class="section-label__line" aria-hidden="true"></span>
+          <span class="section-label__text">de qué forma trabajo</span>
+        </div>
+        <h2 class="section__title" id="processTitle">
+          El proceso completo.<br /> SIN dar vueltas
+        </h2>
+        <p class="section__sub reveal">
+          Cuando un cliente sabe exactamente qué va a pasar y cuándo,
+          la confianza para decir "sí" ya está construida antes de empezar.
+        </p>
+      </div>
+
+      <!-- Línea de tiempo vertical del proceso -->
+      <div class="process-timeline reveal">
+
+        <div class="process-step">
+          <div class="process-step__marker" aria-hidden="true">
+            <span class="process-step__num">01</span>
+            <div class="process-step__line"></div>
+          </div>
+          <div class="process-step__content">
+            <h3 class="process-step__title">Diagnóstico</h3>
+            <p class="process-step__desc">
+              acceso al formulario de 10 preguntas sobre tu presencia digital, audiencia y objetivos.
+              Lo completás cuando tenés tiempo — sin reuniones innecesarias
+            </p>
+            <div class="process-step__tag">Sin coordinar horarios</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__marker" aria-hidden="true">
+            <span class="process-step__num">02</span>
+            <div class="process-step__line"></div>
+          </div>
+          <div class="process-step__content">
+            <h3 class="process-step__title">Análisis</h3>
+            <p class="process-step__desc">
+              Reviso tu presencia digital completa
+              y analizo cuales pueden ser los fuertes para destacar.
+              también la estructura y enfoque que te falta.
+            </p>
+            <div class="process-step__tag">Diagnóstico profundo</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__marker" aria-hidden="true">
+            <span class="process-step__num">03</span>
+            <div class="process-step__line"></div>
+          </div>
+          <div class="process-step__content">
+            <h3 class="process-step__title">Reporte en vivo</h3>
+            <p class="process-step__desc">
+              videollamada con las propuestas de trabajo, organización por etapas
+              objetivo de comunicación, ejercicios para inicio y contenidos sugeridos
+              para empezar. estructuras posibles como modelo de negocio viable.
+            </p>
+            <div class="process-step__tag">Loom · 20 min</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__marker" aria-hidden="true">
+            <span class="process-step__num">04</span>
+            <!-- La última línea no se muestra -->
+          </div>
+          <div class="process-step__content">
+            <h3 class="process-step__title">Plan de acción</h3>
+            <p class="process-step__desc">
+              PDF con el reporte escrito, prioridades ordenadas y próximos 30 días
+              paso a paso. Entrega en 5 días hábiles.
+            </p>
+            <div class="process-step__tag">5 días hábiles</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA del proceso -->
+      <div class="process-cta reveal">
+        <a href="#contacto" class="btn btn--primary btn--large">
+          Empezar ahora →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 5: SOBRE MÍ
+       La historia que conecta todo 
+       ============================================================ -->
+  <section class="section section--about" id="sobre" aria-labelledby="aboutTitle">
+    <div class="container">
+
+      <div class="about-grid">
+
+        <!-- Columna izquierda: texto -->
+        <div class="about-left">
+          <div class="reveal">
+            <div class="section-label">
+              <span class="section-label__line" aria-hidden="true"></span>
+              <span class="section-label__text">Sobre mí</span>
+            </div>
+            <h2 class="section__title" id="aboutTitle">
+              El camino que tomé y<br />que explica por qué<br />veo lo que otros<br /><em>no ven.</em>
+            </h2>
+          </div>
+
+          <blockquote class="about-quote reveal">
+            "Ya estuve dentro de los negocios que fracasan por no saber comunicar
+            bien lo que valen. Eso es exactamente lo que me permite ayudarte a que
+            no te pase a vos."
+          </blockquote>
+
+          <div class="about-body reveal">
+            <p>
+              Empecé bastante lejos del diseño. Trabajé en una peluquería y entendí de primera mano
+              cómo un negocio de servicios vive o muere por la confianza que genera —
+              y definitivamente puedo decir que no era por el precio que cobra.
+            </p>
+            <p>
+              Trabajé AÑOS con ONGs. Proyectos con impacto real que pocos veían
+              porque nadie sabía comunicarlo de la forma correcta, y que si bien tenian buenas intenciones
+              la falta de sustentabilidad y alianzas estratégicas, hacían límite de su capacidad real.
+            </p>
+            <p>
+              Me metí en el diseño de videojuegos y entendí el UX en su forma más exigente:
+              el usuario que no entiende, abandona. Sin segunda oportunidad.
+            </p>
+            <p>
+              Hoy termino la carrera de Programación mientras construyo Estructura de Impacto
+              Todo eso termina en un solo servicio: ayudarte a ser reconocida/o
+              por lo que realmente valés REALMENTE
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna derecha: experiencia / timeline -->
+        <div class="about-right reveal">
+          <div class="section-label">
+            <span class="section-label__line" aria-hidden="true"></span>
+            <span class="section-label__text">Trayectoria</span>
+          </div>
+
+          <div class="timeline" role="list">
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__year">2026–</div>
+              <div class="timeline__content">
+                <div class="timeline__role">Fundadora · Estructura de Impacto Studio</div>
+                <div class="timeline__org">Branding · UX · Impacto Social</div>
+                <p class="timeline__desc">
+                  Auditorías estratégicas de marca para freelancers tech,
+                  líderes y organizaciones con propósito.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__year">2023-2026–</div>
+              <div class="timeline__content">
+                <div class="timeline__role">Carrera de Programación</div>
+                <div class="timeline__org">Facultad · TP Final: App San Nicolás</div>
+                <p class="timeline__desc">
+                  Desarrollo + UX aplicado. Proyecto final: app comunitaria
+                  para vecinos, turistas y negocios de San Nicolás.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__year">2018</div>
+              <div class="timeline__content">
+                <div class="timeline__role">Diseño UX/UI · Identidad visual</div>
+                <div class="timeline__org">ONGs y proyectos sociales</div>
+                <p class="timeline__desc">
+                  Diseño de identidad y comunicación para organizaciones
+                  sin fines de lucro con impacto real.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__year">2021</div>
+              <div class="timeline__content">
+                <div class="timeline__role">Diseño UX/UI · Game Design</div>
+                <div class="timeline__org">Videojuego</div>
+                <p class="timeline__desc">
+                  Interfaces sin tutorial. Engagement, retención y
+                  UX en su forma más pura.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__year">Antes</div>
+              <div class="timeline__content">
+                <div class="timeline__role">Negocio de servicios · Atención directa</div>
+                <div class="timeline__org">Peluquería</div>
+                <p class="timeline__desc">
+                  La experiencia que me enseñó todo sobre la confianza
+                  del cliente antes de conocer el diseño.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 6: FONDO DEL ICEBERG
+       El propósito. La razón más profunda.
+       Diseño oscuro con tipografía grande.
+       ============================================================ -->
+  <section class="section section--deep" aria-labelledby="deepTitle">
+    <div class="container">
+      <div class="deep-content reveal">
+        <div class="section-label">
+          <span class="section-label__line" aria-hidden="true"></span>
+          <span class="section-label__text">El fondo del iceberg</span>
+        </div>
+        <h2 class="deep__title" id="deepTitle">
+          El propósito no es<br />una estrategia de<br />marketing.<br />
+          Es la razón<br />por la que <em>todo esto</em><br />existe.
+        </h2>
+        <p class="deep__sub">
+          Empecé Estructura de Impacto porque vi — una y otra vez —
+          el mismo problema: personas y organizaciones con algo valioso para ofrecer
+          que no sabían mostrarlo. No por falta de talento.
+          Por falta de estructura visible.
+        </p>
+        <a href="#contacto" class="btn btn--primary btn--large reveal">
+          Construyamos juntos →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 7: CONTACTO
+       El CTA final. Formulario simple + datos de contacto.
+       ============================================================ -->
+  <section class="section section--contact" id="contacto" aria-labelledby="contactTitle">
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <!-- Datos de contacto -->
+        <div class="contact-left">
+          <div class="reveal">
+            <div class="section-label">
+              <span class="section-label__line" aria-hidden="true"></span>
+              <span class="section-label__text">Hablemos</span>
+            </div>
+            <h2 class="section__title" id="contactTitle">
+              ¿Querés que<br />trabajemos<br />tu <em>marca</em>?
+            </h2>
+          </div>
+
+          <p class="contact__desc reveal">
+            Si llegaste hasta acá, y algo de todo esto te resonó. Escribime y contame
+            qué está pasando con tu presencia digital y proyectos. No hay compromiso —
+            primero entiendo si puedo ayudarte.
+          </p>
+
+          <div class="contact__links reveal" role="list">
+            <a href="https://www.instagram.com/lula.opazo/" target="_blank" rel="noopener noreferrer"
+              class="contact__link" role="listitem">
+              <div class="contact__link-icon" aria-hidden="true">ig</div>
+              @lula.opazo ( md directo )
+            </a>
+            <a href="https://www.linkedin.com/in/maria-luz-opazo-427b7a212/" target="_blank" rel="noopener noreferrer"
+              class="contact__link" role="listitem">
+              <div class="contact__link-icon" aria-hidden="true">in</div>
+              María Luz Opazo
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="contact-right reveal">
+          <form class="form" id="contactForm" novalidate aria-label="Formulario de contacto">
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="inputName">Nombre</label>
+                <input class="form__input" type="text" id="inputName" name="nombre" placeholder="Tu nombre"
+                  autocomplete="given-name" required />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="inputEmail">Email</label>
+                <input class="form__input" type="email" id="inputEmail" name="email" placeholder="tu@email.com"
+                  autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="inputProfile">¿Quién sos?</label>
+              <select class="form__select" id="inputProfile" name="perfil">
+                <option value="" disabled selected>elegí lo mejor que te describa:</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="lider">emprendedor</option>
+                <option value="ong">ONG,proyecto o emprendimiento social</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="inputMessage">¿Qué está pasando con tu presencia digital?</label>
+              <textarea class="form__textarea" id="inputMessage" name="mensaje"
+                placeholder="Contame en tus palabras. " rows="5" required></textarea>
+            </div>
+
+            <!-- Mensaje de error/éxito -->
+            <div class="form__feedback" id="formFeedback" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn--primary btn--full" id="formSubmit">
+              Enviar mensaje →
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          Estructura<span>.</span> de Impacto · M.Luz Opazo
+        </div>
+        <div class="footer__location">San Nicolás de los Arroyos · Buenos Aires</div>
+        <div class="footer__legal">
+          Un viaje de mil millas comienza por el primer paso
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       Se carga al final del body para no bloquear el render.
+       ============================================================ -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
